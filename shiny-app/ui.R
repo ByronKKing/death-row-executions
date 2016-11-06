@@ -1,12 +1,18 @@
 #Call shiny
+
 library(shiny)
 
 #Create UI
+
 shinyUI(fluidPage(
+  
   #App title
   titlePanel("Execution Data Visualizations"),
+  
   sidebarLayout(
+    
     sidebarPanel(
+      
       p(strong("Texas Death Row Analysis")),
       hr(),
       p("In this app, we look to better understand executed death row prisoners through a racial lens from multiple perspectives.  In order to do this, we created two interactive visualizations in a shiny app, first focusing on the content of prisoner's last statement and second focusing on where the majority of executions occur."),
@@ -19,9 +25,13 @@ shinyUI(fluidPage(
       hr(),
       p("Dataset used available ",a(href="https://drive.google.com/open?id=0B5rBiZTYG3OjQUI3T1NiX3BCMk0", "here.")),
       width=3
-  ),
+      
+    ),
+  
   mainPanel(
+    
     tabsetPanel(
+      
       tabPanel("Last Statement Word Cloud",
                wellPanel(p(strong(textOutput("numberexecuted")))), 
                conditionalPanel(condition = "output.numberexecuted != 'There are no executed prisoners who fit the criteria specified below. Maybe try wider criteria?'", plotOutput('plot1')),
@@ -30,8 +40,8 @@ shinyUI(fluidPage(
                  sliderInput("INAGE", "Age of Executed:", min = 24, max = 67, value = c(30,50), step = 1),
                  sliderInput("INED", "Level of Education:", min = 0, max = 16, value = c(9,12), step = 1))),
       tabPanel("Executions by County and Race Map", uiOutput("death_plot_1_ui"), ggvisOutput("death_plot_1"))
-    )
+    
+      )
   )
-)
-)
-)
+  )
+))

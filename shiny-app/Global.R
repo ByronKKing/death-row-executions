@@ -1,7 +1,19 @@
 #Call libraries
+
 library(tm)
 library(wordcloud)
 library(memoise)
+library(shiny)
+library(ggvis)
+library(rgdal)
+library(rgeos)
+library(magrittr)
+library(dplyr)
+library(RColorBrewer)
+library(data.table)
+library(maptools)
+library(gpclib)
+
 
 #Read in dataset
 death <- read.csv('/home/byronking/Scripts/Death-Row-App/FINAL DATASET.csv')
@@ -75,4 +87,5 @@ getnumex <- memoise(function(race,ed,age) {
   number_of_prisoners <- ifelse(noex==1, paste(noex,"prisoner",sep=" "), paste(noex,"prisoners",sep=" "))
   nop <- paste("Out of the", number_of_prisoners, "with the traits below, we find the words most often used in last statements are:", sep=" ")
   }
+  
 })
